@@ -1,0 +1,74 @@
+/* CodeBlock.css */
+.code-block-container {
+    background-color: #1e1e1e;
+    /* Dark theme background */
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #333;
+}
+
+.code-block-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.code-block-header {
+    background-color: #2d2d2d;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+    margin-right: 1rem;
+}
+
+.control-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.control-dot.red {
+    background-color: #ff5f56;
+}
+
+.control-dot.yellow {
+    background-color: #ffbd2e;
+}
+
+.control-dot.green {
+    background-color: #27c93f;
+}
+
+.window-title {
+    color: #aaa;
+    font-size: 0.9rem;
+    font-family: 'Monaco', 'Consolas', monospace;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 500;
+}
+
+.code-block-body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: left;
+}
+
+/* Override syntax highlighter default padding to fit container */
+.code-block-body pre {
+    margin: 0 !important;
+    padding: 1.5rem !important;
+    background-color: transparent !important;
+}

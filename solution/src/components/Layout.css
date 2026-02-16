@@ -1,0 +1,118 @@
+/* Layout.css */
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    /* Light background for the whole app */
+    color: #333;
+}
+
+.layout-header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .layout-header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .layout-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+    }
+}
+
+.layout-logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.layout-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.layout-nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.layout-nav a:hover,
+.layout-nav a.active {
+    color: #007bff;
+    /* Primary brand color */
+}
+
+.layout-main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@media (max-width: 600px) {
+    .layout-main {
+        padding: 0.5rem;
+    }
+
+    .layout-header {
+        padding: 0.8rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.layout-footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-top: 1px solid #eaeaea;
+    font-size: 0.875rem;
+    color: #777;
+}
+
+/* Card styling for content */
+.content-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 600px) {
+    .content-card {
+        padding: 0;
+    }
+}

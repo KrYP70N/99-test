@@ -1,0 +1,56 @@
+name: Deploy to Google Cloud Storage
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  BUCKET_NAME: ${{ secrets.GCP_BUCKET_NAME }} # Set this secret in your repo
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}   # Set this secret in your repo
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write' # Required for Workload Identity Federation
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'solution/package-lock.json' # Adjust if package-lock is in root or solution/
+
+      - name: Install Dependencies
+        working-directory: ./solution # Assuming the app is in 'solution' folder
+        run: npm ci
+
+      - name: Build Application
+        working-directory: ./solution
+        run: npm run build
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+
+      - name: Upload to GCS
+        uses: google-github-actions/upload-cloud-storage@v2
+        with:
+          path: './solution/dist'
+          destination: '${{ env.BUCKET_NAME }}'
+          parent: false # Upload contents of dist directly to bucket root
+
+      - name: Make files public (Optional)
+        # Only if your bucket isn't already configured as public-read
+        # Requires 'Storage Object Admin' or similar permissions
+        run: |
+          gcloud storage objects update gs://${{ env.BUCKET_NAME }}/** --add-acl-grant=entity=AllUsers,role=READER

@@ -1,0 +1,233 @@
+/* CurrencySwap.css */
+.swap-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Changed from center to allow scrolling on small screens if height exceeds */
+    min-height: 80vh;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.swap-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 480px;
+    margin: 2rem auto;
+    box-shadow:
+        0 8px 32px 0 rgba(31, 38, 135, 0.15),
+        0 4px 12px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 480px) {
+    .swap-card {
+        padding: 1rem;
+        margin: 0.5rem auto;
+        border-radius: 16px;
+    }
+
+    .swap-form {
+        gap: 1rem;
+    }
+
+    .swap-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .swap-header h2 {
+        font-size: 1.5rem;
+    }
+}
+
+.swap-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.swap-header h2 {
+    margin: 0;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: -0.02em;
+}
+
+.swap-header p {
+    color: #666;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.swap-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 0.6rem;
+    color: #555;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.currency-input-group {
+    display: flex;
+    align-items: center;
+    background: #f9fafb;
+    border-radius: 16px;
+    padding: 0.8rem;
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.currency-input-group:focus-within {
+    border-color: #007bff;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+}
+
+.currency-input-group.error {
+    border-color: #dc3545;
+    background: #fff8f8;
+}
+
+.amount-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 1.75rem;
+    padding: 0.2rem;
+    width: 100%;
+    outline: none;
+    font-weight: 600;
+    color: #111;
+    min-width: 0;
+}
+
+/* Hide number input spinners */
+.amount-input::-webkit-inner-spin-button,
+.amount-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Custom Selector Button */
+.currency-select-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 8px 12px 8px 8px;
+    /* Slightly larger padding */
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* Increased shadow */
+    font-size: 1.1rem;
+    /* Larger font */
+    font-weight: 600;
+    color: #111;
+    flex-shrink: 0;
+}
+
+.currency-select-btn:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+    /* More pronounced lift */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+}
+
+.token-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chevron-icon {
+    color: #6b7280;
+    margin-left: 4px;
+}
+
+/* Swap IconDivider */
+.swap-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.swap-icon-btn {
+    background: #f9fafb;
+    border: 4px solid white;
+    /* Create gap effect */
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #007bff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.swap-icon-btn:hover {
+    background: #f0fdf4;
+    color: #007bff;
+}
+
+.exchange-rate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #6b7280;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.5rem;
+}
+
+.swap-button {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+    letter-spacing: 0.5px;
+}
+
+.swap-button:disabled {
+    background: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
