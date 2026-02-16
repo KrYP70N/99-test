@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './', // Use relative paths for better portability on GH Pages
+  base: '/99-test/', // Explicitly set the repo name for GitHub Pages
 })
